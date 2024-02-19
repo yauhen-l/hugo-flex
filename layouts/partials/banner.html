@@ -15,10 +15,12 @@
           {{ $url = (.Page.OutputFormats.Get .Params.format).RelPermalink }}
         {{ end }}
         {{ if eq .Name "LANG" }}
-          {{ if $currentPage.IsTranslated }}
-            {{ range $currentPage.Translations }}
+        {{ if $currentPage.IsTranslated }}
             <li class="Banner-item">
-              <a class="Banner-link u-clickable" href="{{ .RelPermalink }}">{{ .Lang }}</a>
+              <span class="u-clickable active">{{ $currentPage.Lang }}</span>
+              <br/>
+            {{ range $currentPage.Translations }}
+              <a class="Banner-lang u-clickable" href="{{ .RelPermalink }}">{{ .Lang }}</a>
             </li>
             {{ end }}
           {{ end }}
