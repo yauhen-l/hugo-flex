@@ -3,6 +3,11 @@
     <div class="u-wrapper">
       <div class="u-padding u-noboosting">
         {{ safeHTML . }}
+
+        {{ range site.Menus.footer }}
+          {{ $url := relLangURL .URL }}
+          <span class="footer-separator"> | </span><a class="footer-item" href="{{ .PageRef }}">{{ .Name }}</a>
+        {{ end }}
       </div>
     </div>
   </footer>
